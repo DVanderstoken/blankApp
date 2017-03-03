@@ -17,6 +17,13 @@ public class Commune implements Serializable {
 	private static final long serialVersionUID = 7292694884965248230L;
 
 	/**
+	 * code Région.
+	 */
+	@Id
+	@Column(name = "REG", insertable = false, updatable = false)
+	protected String codeRegion;
+
+	/**
 	 * Code du département de la commune.
 	 */
 	@Id
@@ -60,7 +67,9 @@ public class Commune implements Serializable {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("CommuneAbregee [\n\tcodeDepartement=");
+		builder.append("CommuneAbregee [\n\tcodeRegion=");
+		builder.append(codeRegion);
+		builder.append("\n\tcodeDepartement=");
 		builder.append(codeDepartement);
 		builder.append("\n\t, codeCommune=");
 		builder.append(codeCommune);
@@ -130,6 +139,21 @@ public class Commune implements Serializable {
 	 */
 	public void setCodeDepartement(final String pCodeDepartement) {
 		this.codeDepartement = pCodeDepartement;
+	}
+
+	/**
+	 * @return the codeRegion
+	 */
+	public String getCodeRegion() {
+		return codeRegion;
+	}
+
+	/**
+	 * @param codeRegion
+	 *            the codeRegion to set
+	 */
+	public void setCodeRegion(String codeRegion) {
+		this.codeRegion = codeRegion;
 	}
 
 }

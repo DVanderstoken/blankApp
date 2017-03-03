@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(path = "/api/v1")
-@CrossOrigin(origins = {"*"})
+@CrossOrigin(origins = { "*" })
 public class CommuneController {
 
 	@Autowired
@@ -68,16 +68,12 @@ public class CommuneController {
 	 * @return une liste de commune paginée.
 	 */
 	@RequestMapping(path = "/communes/search", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public Page<CommuneComplete> search(
-			@RequestParam(name = "region", required = false) final String pRegion,
+	public Page<CommuneComplete> search(@RequestParam(name = "region", required = false) final String pRegion,
 			@RequestParam(name = "departement", required = false) final String pDepartement,
-			@RequestParam(name = "commune", required = false) final String pCommune,
-			Pageable pPageable) {
+			@RequestParam(name = "commune", required = false) final String pCommune, Pageable pPageable) {
 
-		return lCommuneRepository
-				.findAll(where(CommuneSpecification.isInRegion(pRegion))
-						.and(isInDepartement(pDepartement))
-						.and(isTheCommune(pCommune)), pPageable);
+		return lCommuneRepository.findAll(where(CommuneSpecification.isInRegion(pRegion))
+				.and(isInDepartement(pDepartement)).and(isTheCommune(pCommune)), pPageable);
 
 	}
 

@@ -18,6 +18,11 @@ public class CommuneId implements Serializable {
 	private static final int PRIME = 31;
 
 	/**
+	 * Code de la région.
+	 */
+	private String codeRegion;
+
+	/**
 	 * Code du département.
 	 */
 	private String codeDepartement;
@@ -30,19 +35,36 @@ public class CommuneId implements Serializable {
 	 * Default constructor.
 	 */
 	public CommuneId() {
-		super();
 	}
 
 	/**
+	 * @param pCodeRegion,
+	 *            le code de la région.
 	 * @param pCodeDepartement,
 	 *            le code du département.
 	 * @param pCodeCommune,
 	 *            le code de la commune.
 	 */
-	public CommuneId(final String pCodeDepartement, final String pCodeCommune) {
+	public CommuneId(final String pCodeRegion, final String pCodeDepartement, final String pCodeCommune) {
 		super();
+		this.codeRegion = pCodeRegion;
 		this.codeDepartement = pCodeDepartement;
 		this.codeCommune = pCodeCommune;
+	}
+
+	/**
+	 * @return the codeRegion
+	 */
+	public String getCodeRegion() {
+		return codeRegion;
+	}
+
+	/**
+	 * @param codeRegion
+	 *            the codeRegion to set
+	 */
+	public void setCodeRegion(String codeRegion) {
+		this.codeRegion = codeRegion;
 	}
 
 	/**
@@ -84,10 +106,9 @@ public class CommuneId implements Serializable {
 	public int hashCode() {
 		final int prime = PRIME;
 		int result = 1;
-		result = prime * result
-				+ ((codeCommune == null) ? 0 : codeCommune.hashCode());
-		result = prime * result
-				+ ((codeDepartement == null) ? 0 : codeDepartement.hashCode());
+		result = prime * result + ((codeCommune == null) ? 0 : codeCommune.hashCode());
+		result = prime * result + ((codeDepartement == null) ? 0 : codeDepartement.hashCode());
+		result = prime * result + ((codeRegion == null) ? 0 : codeRegion.hashCode());
 		return result;
 	}
 
@@ -123,6 +144,14 @@ public class CommuneId implements Serializable {
 		} else if (!codeDepartement.equals(other.codeDepartement)) {
 			return false;
 		}
+
+		if (codeRegion == null) {
+			if (other.codeRegion != null) {
+				return false;
+			}
+		} else if (!codeRegion.equals(other.codeRegion)) {
+			return false;
+		}
 		return true;
 	}
 
@@ -134,7 +163,7 @@ public class CommuneId implements Serializable {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("CommuneId [codeDepartement=").append(codeDepartement)
+		builder.append("CommuneId [codeRegion=").append(codeRegion).append(", codeDepartement=").append(codeDepartement)
 				.append(", codeCommune=").append(codeCommune).append("]");
 		return builder.toString();
 	}

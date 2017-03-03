@@ -11,6 +11,7 @@ public abstract class Commune_ {
 	public static volatile SingularAttribute<Commune, String> articleTypoEnrichie;
 	public static volatile SingularAttribute<Commune, String> nomTypoEnrichie;
 	public static volatile SingularAttribute<Commune, String> codeCommune;
+	public static volatile SingularAttribute<Commune, String> codeRegion;
 	public static volatile SingularAttribute<Commune, String> codeDepartement;
 
 }

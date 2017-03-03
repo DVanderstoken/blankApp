@@ -13,8 +13,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "T_COMMUNE")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@NamedQueries({
-		@NamedQuery(name = "findAllCommunes", query = "SELECT cc FROM CommuneComplete cc"),
+@NamedQueries({ @NamedQuery(name = "findAllCommunes", query = "SELECT cc FROM CommuneComplete cc"),
 		@NamedQuery(name = "findCommunesByDept", query = "SELECT cc FROM CommuneComplete cc WHERE codeDepartement = :pCodeDepartement"),
 		@NamedQuery(name = "findCommune", query = "SELECT cc FROM CommuneComplete cc WHERE codeDepartement = :pCodeDepartement AND codeCommune = :pCodeCommune") })
 public final class CommuneComplete extends Commune implements Serializable {
@@ -23,12 +22,6 @@ public final class CommuneComplete extends Commune implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 8789159459611939821L;
-
-	/**
-	 * code Région.
-	 */
-	@Column(name = "REG")
-	private String codeRegion;
 
 	/**
 	 * <p>
@@ -393,7 +386,7 @@ public final class CommuneComplete extends Commune implements Serializable {
 
 	/**
 	 * @param pCodeRegion,
-	 *            le code région d'appartenance de la commune.
+	 *            le code de la région d'appartenance de la commune.
 	 * @param pCodeDepartement,
 	 *            le code du département d'appartenance de la commune.
 	 * @param pChefLieu,
@@ -429,16 +422,12 @@ public final class CommuneComplete extends Commune implements Serializable {
 	 * @param pNomCanton,
 	 *            le nom du canton.
 	 */
-	public CommuneComplete(final String pCodeRegion,
-			final String pCodeDepartement, final String pChefLieu,
-			final String pTypeDeNomEnClair, final String pNomEnClair,
-			final String pNomTypoEnrichie, final String pCodeActualite,
-			final String pEstDecoupeEnCanton, final Integer pFractionCantonale,
-			final String pCodeCommune, final String pCodeArrondissement,
-			final String pCodeCanton, final String pIndicateurModification,
-			final String pCodeComPole, final String pArticleMajuscule,
-			final String pArticleTypoEnrichie, final String pArticleCanton,
-			final String pNomCanton) {
+	public CommuneComplete(final String pCodeRegion, final String pCodeDepartement, final String pChefLieu,
+			final String pTypeDeNomEnClair, final String pNomEnClair, final String pNomTypoEnrichie,
+			final String pCodeActualite, final String pEstDecoupeEnCanton, final Integer pFractionCantonale,
+			final String pCodeCommune, final String pCodeArrondissement, final String pCodeCanton,
+			final String pIndicateurModification, final String pCodeComPole, final String pArticleMajuscule,
+			final String pArticleTypoEnrichie, final String pArticleCanton, final String pNomCanton) {
 		this.codeRegion = pCodeRegion;
 		this.codeDepartement = pCodeDepartement;
 		this.chefLieu = pChefLieu;
@@ -467,6 +456,7 @@ public final class CommuneComplete extends Commune implements Serializable {
 	 */
 	public CommuneComplete(final CommuneAbregee communeAbregee) {
 		super();
+		this.codeRegion = communeAbregee.getCodeRegion();
 		this.codeDepartement = communeAbregee.getCodeDepartement();
 		this.codeCommune = communeAbregee.getCodeCommune();
 		this.articleTypoEnrichie = communeAbregee.getArticleTypoEnrichie();
@@ -481,25 +471,17 @@ public final class CommuneComplete extends Commune implements Serializable {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Commune [\n\tcodeRegion=").append(codeRegion)
-				.append("\n\t, codeDepartement=").append(codeDepartement)
-				.append("\n\t, chefLieu=").append(chefLieu)
-				.append("\n\t, typeDeNomEnClair=").append(typeDeNomEnClair)
-				.append("\n\t, nomEnClair=").append(nomEnClair)
-				.append("\n\t, nomTypoEnrichie=").append(nomTypoEnrichie)
-				.append("\n\t, codeActualite=").append(codeActualite)
-				.append("\n\t, estDecoupeEnCanton=").append(estDecoupeEnCanton)
-				.append("\n\t, fractionCantonale=").append(fractionCantonale)
-				.append("\n\t, codeCommune=").append(codeCommune)
-				.append("\n\t, codeArrondissement=").append(codeArrondissement)
-				.append("\n\t, codeCanton=").append(codeCanton)
-				.append("\n\t, indicateurModification=")
-				.append(indicateurModification).append("\n\t, codeComPole=")
-				.append(codeComPole).append("\n\t, articleMajuscule=")
-				.append(articleMajuscule).append("\n\t, articleTypoEnrichie=")
-				.append(articleTypoEnrichie).append("\n\t, articleCanton=")
-				.append(articleCanton).append("\n\t, nomCanton=")
-				.append(nomCanton).append("\n]");
+		builder.append("Commune [\n\tcodeRegion=").append(codeRegion).append("codeDepartement=").append(codeDepartement)
+				.append("\n\t, chefLieu=").append(chefLieu).append("\n\t, typeDeNomEnClair=").append(typeDeNomEnClair)
+				.append("\n\t, nomEnClair=").append(nomEnClair).append("\n\t, nomTypoEnrichie=").append(nomTypoEnrichie)
+				.append("\n\t, codeActualite=").append(codeActualite).append("\n\t, estDecoupeEnCanton=")
+				.append(estDecoupeEnCanton).append("\n\t, fractionCantonale=").append(fractionCantonale)
+				.append("\n\t, codeCommune=").append(codeCommune).append("\n\t, codeArrondissement=")
+				.append(codeArrondissement).append("\n\t, codeCanton=").append(codeCanton)
+				.append("\n\t, indicateurModification=").append(indicateurModification).append("\n\t, codeComPole=")
+				.append(codeComPole).append("\n\t, articleMajuscule=").append(articleMajuscule)
+				.append("\n\t, articleTypoEnrichie=").append(articleTypoEnrichie).append("\n\t, articleCanton=")
+				.append(articleCanton).append("\n\t, nomCanton=").append(nomCanton).append("\n]");
 		return builder.toString();
 	}
 
@@ -507,15 +489,15 @@ public final class CommuneComplete extends Commune implements Serializable {
 	 * @return the codeRegion
 	 */
 	public String getCodeRegion() {
-		return codeRegion;
+		return super.codeRegion;
 	}
 
 	/**
-	 * @param pCodeRegion
+	 * @param codeRegion
 	 *            the codeRegion to set
 	 */
-	public void setCodeRegion(final String pCodeRegion) {
-		this.codeRegion = pCodeRegion;
+	public void setCodeRegion(String codeRegion) {
+		this.codeRegion = codeRegion;
 	}
 
 	/**
@@ -700,8 +682,7 @@ public final class CommuneComplete extends Commune implements Serializable {
 	 * @param pIndicateurModification
 	 *            the indicateurModification to set
 	 */
-	public void setIndicateurModification(
-			final String pIndicateurModification) {
+	public void setIndicateurModification(final String pIndicateurModification) {
 		this.indicateurModification = pIndicateurModification;
 	}
 

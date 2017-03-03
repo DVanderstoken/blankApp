@@ -13,7 +13,6 @@ public abstract class CommuneComplete_ extends nc.gouv.dtsi.etudes.axi.cog.commu
 	public static volatile SingularAttribute<CommuneComplete, String> indicateurModification;
 	public static volatile SingularAttribute<CommuneComplete, String> chefLieu;
 	public static volatile SingularAttribute<CommuneComplete, String> codeActualite;
-	public static volatile SingularAttribute<CommuneComplete, String> codeRegion;
 	public static volatile SingularAttribute<CommuneComplete, String> nomEnClair;
 	public static volatile SingularAttribute<CommuneComplete, String> articleMajuscule;
 	public static volatile SingularAttribute<CommuneComplete, String> codeCanton;
