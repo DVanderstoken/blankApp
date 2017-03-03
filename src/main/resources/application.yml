@@ -16,10 +16,11 @@ spring:
     rest:
       base-uri: /api
 flyway:
-  enabled: true          
+  enabled: true 
+  locations: classpath:/db/migration         
 logging:
   path: ./logs
-  file: avp.log
+  file: blankApp.log
   level:
     org.springframework: INFO
-    org.flywaydb: INFO
+    org.flywaydb: INFO   
